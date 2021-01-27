@@ -1,6 +1,20 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
+<record id="invoice_report_view_inherit" model="ir.ui.view">
+            <field name="name">account_move_inh</field>
+            <field name="model">account.move</field>
+             <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after" >
+                 <field name="req_qty"/>
+                 <field name="left_qty" invisible="1"/>
+                 </xpath>
+              </field>
+        </record> 
+
+
+
 <!--
     <record model="ir.ui.view" id="nima.list">
       <field name="name">nima list</field>
