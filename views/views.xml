@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="nima.list">
+      <field name="name">nima list</field>
+      <field name="model">nima.nima</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="nima.action_window">
+      <field name="name">nima window</field>
+      <field name="res_model">nima.nima</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="nima.action_server">
+      <field name="name">nima server</field>
+      <field name="model_id" ref="model_nima_nima"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="nima" id="nima.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="nima.menu_1" parent="nima.menu_root"/>
+    <menuitem name="Menu 2" id="nima.menu_2" parent="nima.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="nima.menu_1_list" parent="nima.menu_1"
+              action="nima.action_window"/>
+    <menuitem name="Server to list" id="nima" parent="nima.menu_2"
+              action="nima.action_server"/>
+-->
+  </data>
+</odoo>
