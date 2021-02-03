@@ -15,6 +15,36 @@
 
 
 
+         
+    <record id="sale_order_inherit" model="ir.ui.view">
+            <field name="name">sale_order_inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='name']" position="after">
+                    <field name="lot_date" /> 
+                    <field name="lot_note"/>                    
+                </xpath>
+            </field>
+    </record> 
+
+
+<!-- 
+    <record id="sale_order_inherit" model="ir.ui.view">
+            <field name="name">stock_picking_inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='name']" position="after">
+                <field name="lot_id" />
+                    <field name="lot_date" /> 
+                    <field name="lot_note"/>                    
+                </xpath>
+            </field>
+    </record>  -->
+
+
+
 <!--
     <record model="ir.ui.view" id="nima.list">
       <field name="name">nima list</field>

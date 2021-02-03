@@ -26,4 +26,22 @@ class InvoiceReportExt(models.Model):
                 self.left_qty=0.0
 
 
+class LotExt(models.Model):
+    _inherit = 'stock.production.lot'
+    expiration_date = fields.Datetime(string="Expiration Date")
 
+
+
+
+class SaleOrderLineInherit(models.Model):
+    _inherit="sale.order.line"
+    
+    lot_date = fields.Datetime(string="Lot Expire Date",readonly=True,related="lot_id.expiration_date")
+    lot_note = fields.Html(string="Lot Note",readonly=True, related="lot_id.note")
+
+    @api.constrains("lot_id")
+    def compute_lot_date(self):
+        for line in self:
+            if line.lot_id:
+                line.lot_date = line.lot_id.expiration_date
+                line.lot_note = line.lot_id.note

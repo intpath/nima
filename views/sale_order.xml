@@ -8,9 +8,21 @@
 		</template>
 
          <template id="custom_sale_order" name="saleorder" inherit_id="sale.report_saleorder_document">
-            <xpath expr="//div[@class='page']" position="after">
-                <!-- <div> this is customize div  </div> -->
-            </xpath>
+           <xpath expr="//table[hasclass('o_main_table')]//th[@name='th_description']" position="after">
+				<th name="th_lot" class="text-center">Batch</th>
+				<th name="th_expire" class="text-center">Expiration Date</th>
+			</xpath>
+
+			<xpath expr="//table[hasclass('o_main_table')]//td[@name='td_quantity']" position="before">
+			
+				<td class="text-center">
+					<span t-field="line.lot_id" />
+				</td>
+				<td class="text-center">
+			     		<span t-esc="line.lot_id.expiration_date.strftime('%d-%m-%Y')" t-if="line.lot_id.expiration_date"/>
+				</td>
+			</xpath>
+            
         </template>
     </data>
 </odoo>

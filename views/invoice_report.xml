@@ -9,7 +9,7 @@
 
          <template id="custom_invoice_report" name="invoice_report" inherit_id="account.report_invoice_document">
            <xpath expr="//table[@name='invoice_line_table']//thead//tr//th[@name='th_quantity']" position="after">
-		   <th name="th_req_quantity"> <span class="text-left">الكمية المطلوبة </span></th>
+		           <th name="th_req_quantity"> <span class="text-left">الكمية المطلوبة </span></th>
 		   		   <th name="th_left_quantity"> <span class="text-left">الكمية المتبقية </span></th>
 		   </xpath>
      	
