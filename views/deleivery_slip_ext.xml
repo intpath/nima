@@ -12,10 +12,14 @@
 					<span t-field="move.lot_id" />
 				</td>
 				<td class="text-center">
-					<!-- <span t-field="move.lot_id.expiration_date" /> -->
                     <span t-esc="move.lot_id.expiration_date.strftime('%d-%m-%Y')" t-if="move.lot_id.expiration_date"/>
 				</td>
 			</xpath>  
+
+			<!-- <xpath expr="//div[@class='page']//div[1]//" position="inside">
+				
+			</xpath> -->
+
 
      </template>
     </data>

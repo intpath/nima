@@ -10,7 +10,9 @@
          <template id="custom_sale_order" name="saleorder" inherit_id="sale.report_saleorder_document">
            <xpath expr="//table[hasclass('o_main_table')]//th[@name='th_description']" position="after">
 				<th name="th_lot" class="text-center">Batch</th>
-				<th name="th_expire" class="text-center">Expiration Date</th>
+				<th name="th_expire" class="text-center">Expiration</th>
+				 <th name="th_left_qty" class="text-center"> Deliverd </th>
+				<th name="th_left_qty" class="text-center"> Left</th>
 			</xpath>
 
 			<xpath expr="//table[hasclass('o_main_table')]//td[@name='td_quantity']" position="before">
@@ -20,6 +22,12 @@
 				</td>
 				<td class="text-center">
 			     		<span t-esc="line.lot_id.expiration_date.strftime('%d-%m-%Y')" t-if="line.lot_id.expiration_date"/>
+				</td>
+				<td class="text-center">
+					<span t-field="line.qty_delivered" />
+				</td>
+				<td class="text-center">
+					<span t-field="line.left_qty" />
 				</td>
 			</xpath>
             
