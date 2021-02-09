@@ -2,41 +2,7 @@
 
 from odoo import models, fields, api
 
-
-# class nima(models.Model):
-#     _name = 'nima.nima'
-#     _description = 'nima.nima'
-
-
-
-
-# class InvoiceReportExt(models.Model):
-#     _inherit = 'account.move'
-#     req_qty = fields.Float(string = "Required Quantity")
-#     left_qty  = fields.Float(compute='count_left_item')
-
-
-#     @api.depends("invoice_line_ids")
-#     def count_left_item(self):
-#         for line in self.invoice_line_ids:
-#             if self.req_qty:
-#                 self.left_qty=self.req_qty-line.quantity
-#             else: 
-#                 self.left_qty=0.0
-
-
-    # @api.depends("delivered")
-    # def calc_deliverd(self):
-    #         transfers=self.env["sale.order"].search(("name","=",self.origin))
-    #         self.qty_delivered=transfers
-    
-    # @api.depends("order_line")
-    # def calc_deliverd(self):
-    #     for source_doc in self:
-    #         sale_order=self.env["sale.order.line"].search([("name","=",source_doc.invoice_lines)])
-    #         source_doc.qty_delivered =sale_order      
-
-
+# CREATED AND EDITED BY SHAMS@INTEGRATED_PATH
 class SaleOrderLineInherit(models.Model):
     _inherit="sale.order.line"
     
@@ -45,8 +11,6 @@ class SaleOrderLineInherit(models.Model):
     left_qty=fields.Float(string="Quantity Left",compute="calc_deliverd")
 
 
-    
-    
     @api.constrains("lot_id")
     def compute_lot_date(self):
         for line in self:
@@ -84,6 +48,20 @@ class InvoiceLineExt(models.Model):
             else:
                 invoice_line.qty_delivered=0.0
                 invoice_line.left_qty=0.0
+
+
+
+# class SaleOrderExt(models.Model):
+#     _inherit="sale.order"
+#     user_id=fields.Many2one('res.users',compute="get_user_id") 
+
+    # @api.depends('res.users')
+    # def get_user_id(self):
+    #     for sale_order in self:
+    #         self.user_id=sale_order.user_id
+
+            # user=self.env["stock.picking"].search([("origin","=",sale_order.name)])
+
 
 
 

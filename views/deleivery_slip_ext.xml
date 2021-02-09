@@ -16,9 +16,13 @@
 				</td>
 			</xpath>  
 
-			<!-- <xpath expr="//div[@class='page']//div[1]//" position="inside">
-				
-			</xpath> -->
+			 <xpath expr="//div[@class='page']//div[1]//div[@name='div_origin']" position="after">
+				  <div> 
+				  <strong> Sales person: </strong> 
+				  		<br/>
+				     <span t-field="o.sale_id.user_id"/>
+				   </div>
+			</xpath> 
 
 
      </template>

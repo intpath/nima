@@ -29,30 +29,6 @@
 
 
 
-<!--              
-			<xpath expr="//td[@name='td_taxes']" position="attributes">
-				<attribute name="t-if">o.amount_tax</attribute>
-			</xpath> 
-
-            
-            <xpath expr="//th[@name='th_taxes']" position="attributes">
-				<attribute name="t-if">o.amount_tax</attribute>
-			</xpath>
-              -->
-
-			<!-- <xpath expr="//t[t-set='address']" position="replace"/> -->
-				<!-- <div style="border:solid 1px black; height:30px;">
-				<strong>Sold to </strong>
-				<br/>
-			  <t t-set="address">
-                    <address t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
-                    <div t-if="o.partner_id.vat" class="mt16">
-                        <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>
-                        <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>
-                </t>
-				</div>
-			</xpath> -->
-
 
 		</template>
     </data>
