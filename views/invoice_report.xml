@@ -28,7 +28,16 @@
 		</xpath>
 
 
+		<!-- <xpath expr="//td//span[@id='line_tax_ids']" position="attributes"> -->
+		<xpath expr="//tbody[@class='invoice_tbody']//td[7]" position="attributes">
+			<attribute name="t-if">o.amount_tax</attribute>
+			<attribute name="style">border:solid 1px black </attribute>
+		</xpath>  
 
+		
+		<xpath expr="//th[@name='th_taxes']" position="attributes">
+			<attribute name="t-if">o.amount_tax</attribute>
+		</xpath>
 
 		</template>
     </data>

@@ -10,9 +10,9 @@
          <template id="custom_sale_order" name="saleorder" inherit_id="sale.report_saleorder_document">
            <xpath expr="//table[hasclass('o_main_table')]//th[@name='th_description']" position="after">
 				<th name="th_lot" class="text-center">Batch</th>
-				<th name="th_expire" class="text-center">Expiration</th>
-				 <th name="th_left_qty" class="text-center"> Deliverd </th>
-				<th name="th_left_qty" class="text-center"> Left</th>
+				<th name="th_expire" class="text-center">تاريخ النفاذ</th>
+				 <th name="th_left_qty" class="text-center"> الكمية المطلوبة </th>
+				<th name="th_left_qty" class="text-center"> الكمية المتبقية</th>
 			</xpath>
 
 			<xpath expr="//table[hasclass('o_main_table')]//td[@name='td_quantity']" position="before">
@@ -31,6 +31,14 @@
 				</td>
 			</xpath>
             
+			<xpath expr="//td[@name='td_taxes']" position="attributes">
+				<attribute name="t-if">doc.amount_tax</attribute>
+			</xpath> 
+
+            
+            <xpath expr="//th[@name='th_taxes']" position="attributes">
+				<attribute name="t-if">doc.amount_tax</attribute>
+			</xpath>
         </template>
     </data>
 </odoo>
