@@ -3,7 +3,6 @@
 	<data>
 		
      <template id="delievery_slip_ext" inherit_id="stock.report_delivery_document">
-		<!-- <t t-set="o" t-value="o.with_context(lang=lang)"/> -->
 
          	  <xpath expr="//table[@name='stock_move_table']//th[@name='th_sm_product']" position="after">
 				<th name="th_lot" class="text-center" ><strong>Batch</strong></th>
