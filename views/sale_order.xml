@@ -40,5 +40,19 @@
 				<attribute name="t-if">doc.amount_tax</attribute>
 			</xpath>
         </template>
+
+		<template id="report_saleorder">
+
+			<t t-call="report.html_container">
+			
+			<t t-foreach="docs" t-as="doc">
+			
+			<t t-call="sale.report_saleorder_document" t-lang="doc.partner_id.lang"/>
+			
+			</t>
+			
+			</t>
+			
+			</template>
     </data>
 </odoo>

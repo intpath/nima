@@ -6,11 +6,23 @@
 				<link href="nima/static/src/css/main.css" rel="stylesheet" type="text/css"/>
 			</xpath>
 		</template>
-
+		
          <template id="custom_invoice_report" name="invoice_report" inherit_id="account.report_invoice_document">
-           <xpath expr="//table[@name='invoice_line_table']//thead//tr//th[@name='th_quantity']" position="after">
-		           <th name="th_req_quantity"> <span class="text-left">الكمية المطلوبة </span></th>
-		   		   <th name="th_left_quantity"> <span class="text-left">الكمية المتبقية </span></th>
+
+
+			<xpath expr="//table[@name='invoice_line_table']//thead//tr//th[@name='th_quantity']" position="after">
+		        <th name="th_req_quantity">
+					 <span class="text-left">
+						الكمية المطلوبة
+			     	</span>
+				</th>
+
+		   		   <th name="th_left_quantity">
+					<span class="text-left">
+						الكمية المتبقية
+						</span>
+					</th>
+
 		   </xpath>
      	
 		 <xpath expr="//table[@name='invoice_line_table']//tbody//tr//td[2]" position="after">
@@ -28,17 +40,16 @@
 		</xpath>
 
 
-		<!-- <xpath expr="//td//span[@id='line_tax_ids']" position="attributes"> -->
 		<xpath expr="//tbody[@class='invoice_tbody']//td[7]" position="attributes">
 			<attribute name="t-if">o.amount_tax</attribute>
 			<attribute name="style">border:solid 1px black </attribute>
 		</xpath>  
-
-		
+	
 		<xpath expr="//th[@name='th_taxes']" position="attributes">
 			<attribute name="t-if">o.amount_tax</attribute>
 		</xpath>
+		
+	</template>
 
-		</template>
     </data>
 </odoo>

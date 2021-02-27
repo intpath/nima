@@ -6,9 +6,9 @@ from odoo import models, fields, api
 class SaleOrderLineInherit(models.Model):
     _inherit="sale.order.line"
     
-    lot_date = fields.Datetime(string="Lot Expire Date",readonly=True,related="lot_id.expiration_date")
-    lot_note = fields.Html(string="Lot Note",readonly=True, related="lot_id.note")
-    left_qty=fields.Float(string="Quantity Left",compute="calc_deliverd")
+    lot_date = fields.Datetime(string="Lot Expire Date",readonly=True,related="lot_id.expiration_date", translate=True)
+    lot_note = fields.Html(string="Lot Note",readonly=True, related="lot_id.note", translate=True)
+    left_qty=fields.Float(string="Quantity Left",compute="calc_deliverd", translate=True)
 
 
     @api.constrains("lot_id")
@@ -33,8 +33,8 @@ class SaleOrderLineInherit(models.Model):
 
 class InvoiceLineExt(models.Model):
     _inherit="account.move.line"
-    qty_delivered=fields.Float(string='Quantity Delivered',compute="calc_deliverd")
-    left_qty=fields.Float(string="Quantity Left",compute="calc_deliverd")
+    qty_delivered=fields.Float(string='Quantity Delivered',compute="calc_deliverd", translate=True)
+    left_qty=fields.Float(string="Quantity Left",compute="calc_deliverd",translate=True)
 
 
     @api.depends("sale_line_ids")
@@ -51,19 +51,8 @@ class InvoiceLineExt(models.Model):
 
 
 
-# class SaleOrderExt(models.Model):
-#     _inherit="sale.order"
-#     user_id=fields.Many2one('res.users',compute="get_user_id") 
 
-    # @api.depends('res.users')
-    # def get_user_id(self):
-    #     for sale_order in self:
-    #         self.user_id=sale_order.user_id
-
-            # user=self.env["stock.picking"].search([("origin","=",sale_order.name)])
-
-
-
-
-# in case i didnt delivered anything : qty_delievered is zero 
-# in case i delivered all the quantity : qty_delivered is quantity 
+class StockPickingExt(models.Model):
+    _inherit="stock.picking"
+    driver_name = fields.Char(string = "Driver name", translate=True)
+    veh_num = fields.Char(string = "Vehical number", translate=True)

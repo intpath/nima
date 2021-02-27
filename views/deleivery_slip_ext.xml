@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<data>
+		
      <template id="delievery_slip_ext" inherit_id="stock.report_delivery_document">
+		<!-- <t t-set="o" t-value="o.with_context(lang=lang)"/> -->
+
          	  <xpath expr="//table[@name='stock_move_table']//th[@name='th_sm_product']" position="after">
 				<th name="th_lot" class="text-center" ><strong>Batch</strong></th>
 				<th name="th_expire" class="text-center"><strong>Expiration Date</strong></th>
@@ -17,12 +20,26 @@
 			</xpath>  
 
 			 <xpath expr="//div[@class='page']//div[1]//div[@name='div_origin']" position="after">
-				  <div> 
+				  <div class="col-auto"> 
 				  <strong> Sales person: </strong> 
 				  		<br/>
 				     <span t-field="o.sale_id.user_id"/>
 				   </div>
-			</xpath> 
+
+				   <div class="col-auto"> 
+							<strong> Driver name: </strong> 
+									<br/>
+							<span t-field="o.driver_name"/>
+					 </div>
+
+					 <div class="col-auto"> 
+						<strong> Vehical number: </strong> 
+								<br/>
+						<span t-field="o.veh_num"/>
+				 </div>
+
+
+					</xpath> 
 
 
      </template>
