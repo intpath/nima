@@ -10,7 +10,8 @@
 
 	        	<div align="right" class="col-4"  style="width: 50%;">
                  <div class="row">
-                   <div class="col-3"><img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="min-height: 100px; max-height: 100px;" alt="Logo"/></div>
+                   <div class="col-3">
+                   <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="min-height: 100px; max-height: 100px;" alt="Logo"/></div>
                    <div class="col-8 mt16"><h3 class="header_line"> <span t-field="o.company_id.name"/> 
                     <!-- NimaForms  -->
                     <p style="direction:ltr;">+964790 1948 624</p></h3></div>
@@ -51,6 +52,17 @@
 
                        </div>
                </div>
+
+
+                       <div class="row">
+                        <p align="center"> Al-Obaidi Industrial Estate <br/> Baghdad/Iraq </p>
+                        
+                       <p align="left">
+                        العبيدي الصناعية 
+                        <br/>
+                        بغداد / العراق 
+                        </p>
+                       </div>
             </xpath>
 
 
