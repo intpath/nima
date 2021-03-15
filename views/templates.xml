@@ -44,8 +44,8 @@
      
 
                   </div>
-                  <div class="col-3"  align="right">
-                    <div style="border:solid 1px black;  height:50%; width:100%;">
+                  <div class="col-3 "  align="right" style="margin-left:10px;">
+                    <div style="border:solid 1px black;  height:50%; width:100%; margin:4px;">
                       <div t-if="report_type == 'pdf'" class="text-nowrap">  
                               الصفحة 
                         <span class="page"/> / <span class="topage"/>
