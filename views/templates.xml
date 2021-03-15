@@ -44,7 +44,7 @@
      
 
                   </div>
-                  <div class="col-3">
+                  <div class="col-3"  align="left">
                     <div style="border:solid 1px black;  height:50%; width:100%;">
                       <div    t-if="report_type == 'pdf'" class="text-nowrap">  
                               الصفحة 
