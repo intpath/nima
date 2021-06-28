@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<record id="stock_picking_type_kanban_inherit" model="ir.ui.view">
+			<field name="name">stock.picking.type.kanban</field>
+			<field name="model">stock.picking.type</field>
+			<field name="inherit_id" ref="stock.stock_picking_type_kanban" />
+			<field name="arch" type="xml">
+				<xpath expr="//div[hasclass('o_kanban_card_header_title')]//a[@name='get_stock_picking_action_picking_type']" position="replace">
+					<a name="%(stock.action_picking_form)d" type="action">
+						<field name="name"/>
+					</a>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>
