@@ -6,6 +6,9 @@ from odoo.exceptions import UserError
 class StockMove(models.Model):
 	_inherit = "stock.move"
 
+	product_uom_to = fields.Many2one('uom.uom', string='UoM To', domain="[('category_id', '=', product_uom_category_id)]")
+	product_qty_to = fields.Float(string='Quantity To', compute = "_compute_product_qty_to")
+
 	@api.model
 	def create(self, values):
 		if values.get('purchase_line_id'):
@@ -18,3 +21,12 @@ class StockMove(models.Model):
 		
 		res = super(StockMove, self).create(values)
 		return res
+
+
+	@api.onchange('product_uom_to')
+	def _compute_product_qty_to(self):
+		for rec in self:
+			if rec.product_uom_to:
+				rec.product_qty_to = rec.product_qty / rec.product_uom_to.factor_inv
+			else:
+				rec.product_qty_to = False
