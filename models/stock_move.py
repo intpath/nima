@@ -27,6 +27,12 @@ class StockMove(models.Model):
 	def _compute_product_qty_to(self):
 		for rec in self:
 			if rec.product_uom_to:
-				rec.product_qty_to = rec.product_qty / rec.product_uom_to.factor_inv
+
+				if rec.product_uom_to.uom_type == 'bigger':
+					rec.product_qty_to = rec.product_qty / rec.product_uom_to.factor_inv
+				elif rec.product_uom_to.uom_type == 'smaller':
+					rec.product_qty_to = rec.product_qty * rec.product_uom_to.factor_inv
+				elif rec.product_uom_to.uom_type == 'reference':
+					rec.product_qty_to = rec.product_qty
 			else:
 				rec.product_qty_to = False
