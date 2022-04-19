@@ -18,7 +18,7 @@
 				</td>
 			</xpath>  
 
-			 <xpath expr="//div[@class='page']//div[1]//div[@name='div_origin']" position="after">
+			<xpath expr="//div[@class='page']//div[1]//div[@name='div_origin']" position="after">
 				  <div class="col-auto"> 
 				  <strong> Sales person: </strong> 
 				  		<br/>
@@ -38,8 +38,17 @@
 				 </div>
 
 
-					</xpath> 
+			</xpath>
 
+			<xpath expr="//table[@name='stock_move_table']//thead//tr" position="inside">
+				<th name="th_sm_quantity"><strong>Quantity to</strong></th>	
+			</xpath>
+			<xpath expr="//table[@name='stock_move_table']//tbody//tr" position="inside">
+				<td>
+					<span t-esc="round(move.product_qty_to,2)"/>
+					<span t-field="move.product_uom_to"/>
+				</td>
+			</xpath>
 
      </template>
     </data>
