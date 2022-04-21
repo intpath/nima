@@ -50,6 +50,19 @@
 				</td>
 			</xpath>
 
+			<xpath expr="//table[@name='stock_move_line_table']//thead//tr" position="inside">
+				<th name="th_sm_quantity"><strong>Quantity to</strong></th>
+			</xpath>
+
+
      </template>
+		<template id="stock_report_delivery_aggregated_move_lines_inherit_nima" inherit_id="stock.stock_report_delivery_aggregated_move_lines">
+			<xpath expr="//td[@name='move_line_aggregated_qty_done']" position="after">
+				<td>
+					<span t-esc="round(aggregated_lines[line]['product_qty_to'],2)"/>
+					<span t-esc="aggregated_lines[line]['product_uom_to'].name"/>
+				</td>
+			</xpath>
+		</template>
     </data>
 </odoo>
