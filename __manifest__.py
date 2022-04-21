@@ -19,6 +19,7 @@
         'mrp', 'mai_sale_order_lot_selection', 'product_expiry'
     ],
 
+    
     # always loaded
     'data': [
         'views/views.xml',
