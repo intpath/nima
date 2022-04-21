@@ -62,7 +62,6 @@
 					<span t-esc="round(aggregated_lines[line]['product_qty_to'],2)"/>
 					<span t-esc="aggregated_lines[line]['product_uom_to'].name"/>
 				</td>
-			</xpath>
 		</template>
     </data>
 </odoo>
