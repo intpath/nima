@@ -25,7 +25,7 @@
 				     <span t-field="o.sale_id.user_id"/>
 				   </div>
 
-				   <div class="col-auto"> 
+				<div class="col-auto"> 
 							<strong> Driver name: </strong> 
 									<br/>
 							<span t-field="o.driver_name"/>
@@ -35,7 +35,7 @@
 						<strong> Vehical number: </strong> 
 								<br/>
 						<span t-field="o.veh_num"/>
-				 </div>
+				 </div> 
 
 
 			</xpath>
@@ -62,6 +62,7 @@
 					<span t-esc="round(aggregated_lines[line]['product_qty_to'],2)"/>
 					<span t-esc="aggregated_lines[line]['product_uom_to'].name"/>
 				</td>
+			</xpath>
 		</template>
     </data>
 </odoo>
