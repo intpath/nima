@@ -23,16 +23,15 @@ class StockMove(models.Model):
 		return res
 
 
-	@api.onchange('product_qty')
-	@api.onchange('product_uom_to')
+	@api.onchange('product_uom_to', 'product_qty')
 	def _compute_product_qty_to(self):
 		for rec in self:
 			if rec.product_uom_to:
 
 				if rec.product_uom_to.uom_type == 'bigger':
-					rec.product_qty_to = (rec.product_qty * rec.product_uom_id.factor_inv) / rec.product_uom_to.factor_inv
+					rec.product_qty_to = (rec.product_qty * rec.product_uom.factor_inv) / rec.product_uom_to.factor_inv
 				elif rec.product_uom_to.uom_type == 'smaller':
-					rec.product_qty_to = (rec.product_qty * rec.product_uom_id.factor) * rec.product_uom_to.factor
+					rec.product_qty_to = (rec.product_qty * rec.product_uom.factor) * rec.product_uom_to.factor
 				elif rec.product_uom_to.uom_type == 'reference':
 					rec.product_qty_to = rec.product_qty
 			else:
@@ -46,16 +45,14 @@ class StockMoveLine(models.Model):
 	product_uom_to = fields.Many2one('uom.uom', string='UoM To', domain="[('category_id', '=', product_uom_category_id)]")
 	product_qty_to = fields.Float(string='Quantity To', compute = "_compute_product_qty_to")
 
-	@api.onchange('product_qty')
-	@api.onchange('product_uom_to')
+	@api.onchange('product_uom_to', 'product_qty')
 	def _compute_product_qty_to(self):
 		for rec in self:
 			if rec.product_uom_to:
-
 				if rec.product_uom_to.uom_type == 'bigger':
-					rec.product_qty_to = (rec.qty_done * rec.product_uom.factor_inv) / rec.product_uom_to.factor_inv
+					rec.product_qty_to = (rec.qty_done * rec.product_uom_id.factor_inv) / rec.product_uom_to.factor_inv
 				elif rec.product_uom_to.uom_type == 'smaller':
-					rec.product_qty_to = (rec.qty_done * rec.product_uom.factor) * rec.product_uom_to.factor
+					rec.product_qty_to = (rec.qty_done * rec.product_uom_id.factor) * rec.product_uom_to.factor
 				elif rec.product_uom_to.uom_type == 'reference':
 					rec.product_qty_to = rec.qty_done
 			else:
