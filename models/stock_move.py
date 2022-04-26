@@ -29,9 +29,9 @@ class StockMove(models.Model):
 			if rec.product_uom_to:
 
 				if rec.product_uom_to.uom_type == 'bigger':
-					rec.product_qty_to = rec.product_qty / rec.product_uom_to.factor_inv
+					rec.product_qty_to = (rec.product_qty * rec.product_uom_id.factor_inv) / rec.product_uom_to.factor_inv
 				elif rec.product_uom_to.uom_type == 'smaller':
-					rec.product_qty_to = rec.product_qty * rec.product_uom_to.factor
+					rec.product_qty_to = (rec.product_qty * rec.product_uom_id.factor) * rec.product_uom_to.factor
 				elif rec.product_uom_to.uom_type == 'reference':
 					rec.product_qty_to = rec.product_qty
 			else:
@@ -52,9 +52,9 @@ class StockMoveLine(models.Model):
 			if rec.product_uom_to:
 
 				if rec.product_uom_to.uom_type == 'bigger':
-					rec.product_qty_to = rec.qty_done / rec.product_uom_to.factor_inv
+					rec.product_qty_to = (rec.product_qty * rec.product_uom_id.factor_inv) / rec.product_uom_to.factor_inv
 				elif rec.product_uom_to.uom_type == 'smaller':
-					rec.product_qty_to = rec.qty_done * rec.product_uom_to.factor
+					rec.product_qty_to = (rec.product_qty * rec.product_uom_id.factor) * rec.product_uom_to.factor
 				elif rec.product_uom_to.uom_type == 'reference':
 					rec.product_qty_to = rec.qty_done
 			else:
