@@ -128,8 +128,8 @@
 						<field name="is_locked" invisible="1"/>
 						<field name="qty_done" attrs="{'readonly': [('state', 'in', ('done', 'cancel')), ('is_locked', '=', True)]}" force_save="1"/>
 						<field name="product_uom_id" force_save="1" attrs="{'readonly': [('state', '!=', 'draft'), ('id', '!=', False)]}" groups="uom.group_uom"/>
-						<field name="product_uom_to" options="{'no_open': True, 'no_create': True}"/>
-						<field name="product_qty_to"/>
+						<field name="product_uom_to" options="{'no_open': True, 'no_create': True}" attrs="{'readonly': [('state', 'not in', ['draft', 'confirmed', 'assigned'])]}"/>
+						<field name="product_qty_to" attrs="{'readonly': [('state', 'not in', ['draft', 'confirmed', 'assigned'])]}"/>
 					</tree>
 				</xpath>
 

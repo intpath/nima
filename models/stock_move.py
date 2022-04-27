@@ -38,25 +38,23 @@ class StockMove(models.Model):
 				rec.product_qty_to = False
 
 
-
 class StockMoveLine(models.Model):
 	_inherit = "stock.move.line"
 
 	product_uom_to = fields.Many2one('uom.uom', string='UoM To', domain="[('category_id', '=', product_uom_category_id)]")
-	product_qty_to = fields.Float(string='Quantity To', compute = "_compute_product_qty_to")
+	product_qty_to = fields.Float(string='Quantity To')
 
-	@api.onchange('product_uom_to', 'product_qty')
+	@api.onchange('product_uom_to', 'product_qty_to')
 	def _compute_product_qty_to(self):
 		for rec in self:
-			if rec.product_uom_to:
+			if rec.product_qty_to:
 				if rec.product_uom_to.uom_type == 'bigger':
-					rec.product_qty_to = (rec.qty_done * rec.product_uom_id.factor_inv) / rec.product_uom_to.factor_inv
+					rec.qty_done = (rec.product_qty_to * rec.product_uom_to.factor_inv) / rec.product_uom_id.factor_inv
 				elif rec.product_uom_to.uom_type == 'smaller':
-					rec.product_qty_to = (rec.qty_done * rec.product_uom_id.factor) * rec.product_uom_to.factor
+					rec.qty_done = rec.product_qty_to / (rec.product_uom_to.factor * rec.product_uom_id.factor)
 				elif rec.product_uom_to.uom_type == 'reference':
-					rec.product_qty_to = rec.qty_done
-			else:
-				rec.product_qty_to = False
+					rec.qty_done = rec.product_qty_to
+
 
 
 	def _get_aggregated_product_quantities(self, **kwargs):
