@@ -2,8 +2,8 @@
     <data>
 
 <template inherit_id="web.external_layout_standard" id="custom_nuboogh_layout">
-  
-        <xpath expr="//div[@t-att-style='report_header_style']//div[1]" position="replace">          
+        <xpath expr="//div[@t-att-style='report_header_style']//div[3]" position="replace"/>
+        <xpath expr="//div[@t-att-style='report_header_style']//div[1]" position="replace">
           
             <div class="row" style="width: 100%; direction:ltr" id="row_header">
               <!-- START OF THE HEADER DIV  -->
@@ -35,17 +35,15 @@
                     <h4 align="center" class="text-nowrap">
                       Moroj AlZomrod Company
                     </h4>
-                    <p style="font-size:13px; line-height:1.5;" align="center">for trading and manufacturing of Packaging Materials
+                    <p style="font-size:12px; line-height:1;" align="center">for trading and manufacturing of Packaging Materials
                       <br/>                                           
-                      Al-Obaidi Industrial Estate
-                      <br/>
-                      Baghdad / Iraq   
+                      Al-Obaidi Industrial Estate , Baghdad / Iraq   
                     </p>
      
 
                   </div>
                   <div class="col-3 "  align="right" style="margin-left:10px;">
-                    <div style="border:solid 1px black;  height:50%; width:100%; margin:4px;">
+                    <div style="height:50%; width:100%; margin:4px;">
                       <div t-if="report_type == 'pdf'" class="text-nowrap">  
                               الصفحة 
                         <span class="page"/> / <span class="topage"/>
@@ -71,19 +69,19 @@
             
                
                
-                      </div>
+            </div>
             </xpath>
 
 
-            <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="replace">
-              <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')" style="padding-top:60px;">
-                  <div class="pt-5">
-                      <!-- This div ensures that the address is not cropped by the header. -->
-                      <t t-call="web.address_layout"/>
-                  </div>
-                  <t t-raw="0"/>
-              </div>
-            </xpath>
+<!--            <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="replace">-->
+<!--              <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')" style="padding-top:60px;">-->
+<!--                  <div class="pt-5">-->
+<!--                      &lt;!&ndash; This div ensures that the address is not cropped by the header. &ndash;&gt;-->
+<!--                      <t t-call="web.address_layout"/>-->
+<!--                  </div>-->
+<!--                  <t t-raw="0"/>-->
+<!--              </div>-->
+<!--            </xpath>-->
 
 
               
